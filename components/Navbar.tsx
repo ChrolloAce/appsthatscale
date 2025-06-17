@@ -59,6 +59,11 @@ const Navbar: React.FC = () => {
               Course
             </a>
           </li>
+          <li className="nav-item">
+            <a href="/dashboard" className="nav-link">
+              Dashboard
+            </a>
+          </li>
         </ul>
 
         <div className="nav-cta">
