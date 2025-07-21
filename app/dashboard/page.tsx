@@ -979,7 +979,7 @@ const Dashboard: React.FC = () => {
         } else if (element.type === 'image' && element.src) {
           // Handle image elements - simplified approach
           try {
-            const img = new Image()
+            const img = document.createElement('img') as HTMLImageElement
             img.crossOrigin = 'anonymous'
             img.onload = () => {
               ctx.save()
