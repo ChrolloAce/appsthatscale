@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import WaitlistHero from '../components/WaitlistHero'
 import WaitlistQuiz from '../components/WaitlistQuiz'
 import Footer from '../components/Footer'
@@ -7,7 +6,6 @@ import Footer from '../components/Footer'
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navbar />
       <div className="relative">
         {/* Hero Section */}
         <WaitlistHero />

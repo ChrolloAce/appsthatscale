@@ -2,138 +2,119 @@
 
 import React, { useState } from 'react'
 
-interface QuizAnswer {
-  id: string;
-  text: string;
-  icon?: string;
-}
-
-interface QuizStep {
-  id: string;
-  question: string;
-  subtitle?: string;
-  answers: QuizAnswer[];
-  type: 'single' | 'multiple' | 'email';
-}
-
 interface WaitlistQuizProps {
   className?: string;
 }
 
 const WaitlistQuiz: React.FC<WaitlistQuizProps> = ({ className = '' }) => {
   const [currentStep, setCurrentStep] = useState(0)
-  const [answers, setAnswers] = useState<Record<string, string[]>>({})
-  const [email, setEmail] = useState('')
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: ''
+  })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
 
-  const quizSteps: QuizStep[] = [
+  const steps = [
     {
-      id: 'experience',
-      question: 'What\'s your current development experience?',
-      subtitle: 'Help us tailor the perfect learning path for you',
-      type: 'single',
-      answers: [
-        { id: 'beginner', text: '🌱 Just starting out (0-1 years)', icon: '🌱' },
-        { id: 'intermediate', text: '🚀 Getting confident (1-3 years)', icon: '🚀' },
-        { id: 'advanced', text: '💪 Pretty experienced (3-5 years)', icon: '💪' },
-        { id: 'expert', text: '🎯 Senior level (5+ years)', icon: '🎯' }
-      ]
-    },
-    {
-      id: 'goals',
-      question: 'What are you most interested in learning?',
-      subtitle: 'Select all that apply - we cover it all!',
-      type: 'multiple',
-      answers: [
-        { id: 'architecture', text: '🏗️ System Architecture & Design', icon: '🏗️' },
-        { id: 'scaling', text: '📈 Scaling Applications', icon: '📈' },
-        { id: 'performance', text: '⚡ Performance Optimization', icon: '⚡' },
-        { id: 'deployment', text: '🚀 Deployment & DevOps', icon: '🚀' },
-        { id: 'databases', text: '🗄️ Database Design', icon: '🗄️' },
-        { id: 'apis', text: '🔗 API Development', icon: '🔗' }
-      ]
-    },
-    {
-      id: 'challenges',
-      question: 'What\'s your biggest challenge right now?',
-      subtitle: 'We\'ll make sure to address this in your personalized content',
-      type: 'single',
-      answers: [
-        { id: 'overwhelmed', text: '😵 Too many technologies to learn', icon: '😵' },
-        { id: 'production', text: '🔥 Making apps production-ready', icon: '🔥' },
-        { id: 'scaling', text: '📊 Handling growth and scaling', icon: '📊' },
-        { id: 'best-practices', text: '✨ Learning industry best practices', icon: '✨' },
-        { id: 'career', text: '🎯 Advancing my career', icon: '🎯' }
-      ]
+      id: 'name',
+      question: 'What\'s your name?',
+      subtitle: 'We\'d love to know what to call you',
+      placeholder: 'Enter your full name',
+      type: 'text' as const
     },
     {
       id: 'email',
-      question: 'Almost there! What\'s your email?',
-      subtitle: 'We\'ll send you exclusive early access and personalized recommendations',
-      type: 'email',
-      answers: []
+      question: 'What\'s your email address?',
+      subtitle: 'We\'ll send you exclusive updates and early access',
+      placeholder: 'Enter your email address',
+      type: 'email' as const
+    },
+    {
+      id: 'phone',
+      question: 'What\'s your phone number?',
+      subtitle: 'For important updates and priority access (optional)',
+      placeholder: 'Enter your phone number',
+      type: 'tel' as const
     }
   ];
 
-  const handleAnswer = (stepId: string, answerId: string) => {
-    const step = quizSteps[currentStep];
+  const validateStep = (stepIndex: number): boolean => {
+    const step = steps[stepIndex];
+    const value = formData[step.id as keyof typeof formData];
     
-    if (step.type === 'single') {
-      setAnswers(prev => ({ ...prev, [stepId]: [answerId] }));
-      // Auto advance for single choice
-      setTimeout(() => {
-        if (currentStep < quizSteps.length - 1) {
-          setCurrentStep(prev => prev + 1);
-        }
-      }, 500);
-    } else if (step.type === 'multiple') {
-      setAnswers(prev => {
-        const currentAnswers = prev[stepId] || [];
-        const newAnswers = currentAnswers.includes(answerId)
-          ? currentAnswers.filter(id => id !== answerId)
-          : [...currentAnswers, answerId];
-        return { ...prev, [stepId]: newAnswers };
-      });
+    setErrors({});
+    
+    if (step.id === 'name' && !value.trim()) {
+      setErrors({ [step.id]: 'Please enter your name' });
+      return false;
+    }
+    
+    if (step.id === 'email') {
+      if (!value.trim()) {
+        setErrors({ [step.id]: 'Please enter your email address' });
+        return false;
+      }
+      if (!/\S+@\S+\.\S+/.test(value)) {
+        setErrors({ [step.id]: 'Please enter a valid email address' });
+        return false;
+      }
+    }
+    
+    // Phone is optional, so no validation needed
+    return true;
+  };
+
+  const handleInputChange = (field: keyof typeof formData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: '' }));
     }
   };
 
   const handleNext = () => {
-    if (currentStep < quizSteps.length - 1) {
-      setCurrentStep(prev => prev + 1);
+    if (validateStep(currentStep)) {
+      if (currentStep < steps.length - 1) {
+        setCurrentStep(prev => prev + 1);
+      } else {
+        handleSubmit();
+      }
     }
   };
 
-  const handleEmailSubmit = async () => {
-    if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
-      return;
-    }
-
+  const handleSubmit = async () => {
     setIsSubmitting(true);
 
     try {
-      // Store quiz results and email
-      const quizData = {
-        email,
-        answers,
+      // Store form data
+      const submissionData = {
+        ...formData,
         timestamp: new Date().toISOString()
       };
       
-      localStorage.setItem('waitlistQuizData', JSON.stringify(quizData));
+      localStorage.setItem('waitlistFormData', JSON.stringify(submissionData));
       
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       setIsCompleted(true);
     } catch (error) {
-      console.error('Quiz submission error:', error);
+      console.error('Form submission error:', error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const currentStepData = quizSteps[currentStep];
-  const progress = ((currentStep + 1) / quizSteps.length) * 100;
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleNext();
+    }
+  };
+
+  const progress = ((currentStep + 1) / steps.length) * 100;
+  const currentStepData = steps[currentStep];
 
   if (isCompleted) {
     return (
@@ -146,11 +127,10 @@ const WaitlistQuiz: React.FC<WaitlistQuizProps> = ({ className = '' }) => {
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Welcome to the exclusive waitlist! 🎉</h3>
           <p className="text-lg text-gray-600 mb-6">
-            Based on your answers, we've crafted the perfect learning experience for you. 
-            You'll be among the first to know when we launch!
+            Thanks {formData.name}! You'll be among the first to know when we launch Apps That Scale.
           </p>
           <div className="bg-white rounded-xl p-4 border border-green-200">
-            <p className="text-sm text-gray-500 mb-2">🎯 Your personalized path is ready</p>
+            <p className="text-sm text-gray-500 mb-2">🎯 You're all set!</p>
             <p className="font-semibold text-gray-800">Check your email for exclusive early access</p>
           </div>
         </div>
@@ -164,12 +144,12 @@ const WaitlistQuiz: React.FC<WaitlistQuizProps> = ({ className = '' }) => {
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-gray-500">Step {currentStep + 1} of {quizSteps.length}</span>
+            <span className="text-sm text-gray-500">Step {currentStep + 1} of {steps.length}</span>
             <span className="text-sm text-gray-500">{Math.round(progress)}% complete</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div 
-              className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full transition-all duration-500"
+              className="bg-blue-600 h-2 rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -180,65 +160,41 @@ const WaitlistQuiz: React.FC<WaitlistQuizProps> = ({ className = '' }) => {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
             {currentStepData.question}
           </h2>
-          {currentStepData.subtitle && (
-            <p className="text-lg text-gray-600">{currentStepData.subtitle}</p>
-          )}
+          <p className="text-lg text-gray-600">{currentStepData.subtitle}</p>
         </div>
 
-        {/* Answers */}
-        {currentStepData.type === 'email' ? (
-          <div className="space-y-6">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              className="input w-full text-center text-lg py-4"
-              onKeyPress={(e) => e.key === 'Enter' && handleEmailSubmit()}
-            />
-            <button
-              onClick={handleEmailSubmit}
-              disabled={isSubmitting || !email.trim()}
-              className="btn btn-primary btn-lg w-full"
-            >
-              {isSubmitting ? (
-                <>
-                  <div className="spinner mr-2"></div>
-                  Joining Waitlist...
-                </>
-              ) : (
-                'Join the Waitlist 🚀'
-              )}
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {currentStepData.answers.map((answer) => (
-              <button
-                key={answer.id}
-                onClick={() => handleAnswer(currentStepData.id, answer.id)}
-                className={`
-                  w-full p-4 text-left border-2 rounded-xl transition-all duration-200 hover:border-blue-300 hover:bg-blue-50 
-                  ${answers[currentStepData.id]?.includes(answer.id) 
-                    ? 'border-blue-500 bg-blue-50 text-blue-900' 
-                    : 'border-gray-200 bg-white text-gray-700'
-                  }
-                `}
-              >
-                <span className="text-lg font-medium">{answer.text}</span>
-              </button>
-            ))}
-            
-            {currentStepData.type === 'multiple' && answers[currentStepData.id]?.length > 0 && (
-              <button
-                onClick={handleNext}
-                className="btn btn-primary btn-lg w-full mt-6"
-              >
-                Continue →
-              </button>
+        {/* Input */}
+        <div className="space-y-6">
+          <input
+            type={currentStepData.type}
+            value={formData[currentStepData.id as keyof typeof formData]}
+            onChange={(e) => handleInputChange(currentStepData.id as keyof typeof formData, e.target.value)}
+            placeholder={currentStepData.placeholder}
+            className={`input w-full text-center text-lg py-4 ${errors[currentStepData.id] ? 'border-red-300 focus:border-red-500' : ''}`}
+            onKeyPress={handleKeyPress}
+            autoFocus
+          />
+          {errors[currentStepData.id] && (
+            <p className="text-red-600 text-center text-sm">{errors[currentStepData.id]}</p>
+          )}
+          
+          <button
+            onClick={handleNext}
+            disabled={isSubmitting}
+            className="btn btn-primary btn-lg w-full"
+          >
+            {isSubmitting ? (
+              <>
+                <div className="spinner mr-2"></div>
+                Joining Waitlist...
+              </>
+            ) : currentStep === steps.length - 1 ? (
+              'Join the Waitlist 🚀'
+            ) : (
+              'Continue →'
             )}
-          </div>
-        )}
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
             className="h-8 w-auto mx-auto mb-4"
           />
           <p className="text-gray-500 text-sm">
-            © 2024 Apps That Scale. Building the future of scalable applications.
+            © 2025 Apps That Scale. Building the future of scalable applications.
           </p>
         </div>
       </div>
