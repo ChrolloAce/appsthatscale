@@ -2,12 +2,7 @@
 
 import React from 'react'
 
-interface WaitlistHeroProps {
-  onEmailSubmit: (email: string) => void;
-  isSubmitting: boolean;
-}
-
-const WaitlistHero: React.FC<WaitlistHeroProps> = ({ onEmailSubmit, isSubmitting }) => {
+const WaitlistHero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
       {/* Background Elements */}

@@ -11,10 +11,7 @@ export default function Home() {
       <Navbar />
       <div className="relative">
         {/* Hero Section with Background */}
-        <WaitlistHero 
-          onEmailSubmit={() => {}} 
-          isSubmitting={false}
-        />
+        <WaitlistHero />
         
         {/* Signup Form Section */}
         <section className="relative -mt-32 pb-20">
