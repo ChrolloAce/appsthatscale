@@ -57,18 +57,25 @@ const WaitlistHero: React.FC = () => {
           />
         </div>
 
-        {/* Main Headline - Better mobile sizing */}
-                  <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
-            <span className="block mb-2 sm:mb-3">Build Apps That</span>
-            <span className="block bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              Actually Scale
-            </span>
-          </h1>
+                {/* Main Headline - Better mobile sizing */}
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
+          <span className="block mb-2 sm:mb-3">Achieve true financial freedom</span>
+          <span className="block bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            with apps that actually scale
+          </span>
+        </h1>
 
         {/* Updated Subheadline - Better mobile sizing */}
         <p className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-gray-600 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-light px-4">
-          Join 1000+ developers on this waitlist learning to build production-ready applications 
-          with modern architecture, scalability patterns, and industry best practices.
+          B2C Apps are the highest leverage business to ever exist. Build it once, sell it forever. 
+          An asset that makes you money while you sleep — no annoying meetings, no tight schedules, just cashflow.
+          <br className="hidden sm:block" />
+          <br className="hidden sm:block" />
+          With the rise of AI, anyone can make one in under 7 days. 
+          <br className="hidden sm:block" />
+          <br className="hidden sm:block" />
+          <strong>I will teach you how I scaled my apps to over $20K MRR in under 30 days</strong> — 
+          and how I'm doing that for 7 other of my apps.
         </p>
 
         {/* Launch Discount Offer - Mobile responsive */}
