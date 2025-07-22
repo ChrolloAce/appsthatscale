@@ -1,7 +1,6 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import ThankYouHero from '../../components/ThankYouHero'
-import ThankYouNextSteps from '../../components/ThankYouNextSteps'
 import Footer from '../../components/Footer'
 
 export const metadata: Metadata = {
@@ -12,17 +11,10 @@ export const metadata: Metadata = {
 
 export default function ThankYouPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <main className="min-h-screen bg-white">
       <div className="relative">
         {/* Hero Section */}
         <ThankYouHero />
-        
-        {/* Next Steps Section */}
-        <section className="relative pb-16 pt-8">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <ThankYouNextSteps />
-          </div>
-        </section>
       </div>
       <Footer />
     </main>
