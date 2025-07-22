@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckCircle, faStar, faGift, faRocket } from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 
 const ThankYouHero: React.FC = () => {
   const [isAnimated, setIsAnimated] = useState(false)
@@ -61,85 +61,18 @@ const ThankYouHero: React.FC = () => {
           </p>
         </div>
 
-        {/* Success Offer Badge - Match main page */}
-        <div className="mb-8 sm:mb-12 px-4">
-          <div className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-orange-50 to-red-50 border-2 border-orange-200">
-            <span className="text-sm sm:text-base lg:text-lg font-semibold text-orange-800">
-              🎯 Your 50% OFF discount is secured!
-            </span>
-          </div>
-        </div>
-
-        {/* Benefits Cards - Better mobile spacing */}
-        <div className="px-4 sm:px-6">
-          <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto transform transition-all duration-1000 delay-500 ${
-            isAnimated ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}>
-            <BenefitCard
-              icon={faGift}
-              title="50% OFF Secured"
-              description="Your early bird discount is locked in"
-              gradient="from-orange-500 to-red-500"
-            />
-            
-            <BenefitCard
-              icon={faStar}
-              title="Priority Access"
-              description="First to know when we launch"
-              gradient="from-blue-500 to-purple-600"
-            />
-            
-            <BenefitCard
-              icon={faRocket}
-              title="Exclusive Content"
-              description="Bonus materials just for waitlisters"
-              gradient="from-purple-500 to-blue-600"
-            />
-          </div>
-        </div>
-
-        {/* Social Proof Stats - Match main page */}
-        <div className={`mt-12 sm:mt-16 px-4 transform transition-all duration-1000 delay-700 ${
+        {/* Simple completion message */}
+        <div className={`mt-8 sm:mt-12 px-4 transform transition-all duration-1000 delay-500 ${
           isAnimated ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
         }`}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-blue-600">1,247</div>
-              <div className="text-sm text-gray-500 font-medium">Waitlist Members</div>
-            </div>
-            <div className="hidden sm:block w-px h-12 bg-gray-300"></div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-green-600">$156K+</div>
-              <div className="text-sm text-gray-500 font-medium">Student Revenue</div>
-            </div>
-            <div className="hidden sm:block w-px h-12 bg-gray-300"></div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-bold text-purple-600">4.9★</div>
-              <div className="text-sm text-gray-500 font-medium">Average Rating</div>
-            </div>
+          <div className="max-w-2xl mx-auto text-center">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
+              Check your email for your confirmation and get ready for an amazing journey! 🚀
+            </p>
           </div>
         </div>
       </div>
     </section>
-  )
-}
-
-interface BenefitCardProps {
-  icon: any
-  title: string
-  description: string
-  gradient: string
-}
-
-const BenefitCard: React.FC<BenefitCardProps> = ({ icon, title, description, gradient }) => {
-  return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105 h-full">
-      <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-r ${gradient} flex items-center justify-center mb-3 sm:mb-4 mx-auto`}>
-        <FontAwesomeIcon icon={icon} className="text-white text-lg sm:text-xl" />
-      </div>
-      <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
-    </div>
   )
 }
 

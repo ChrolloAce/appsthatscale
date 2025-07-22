@@ -52,6 +52,9 @@ module.exports = {
         'float': 'float 6s ease-in-out infinite',
         'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
         'ripple': 'ripple 0.6s linear',
+        'shake': 'shake 2s ease-in-out infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
+        'shimmer': 'shimmer 2s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -65,6 +68,19 @@ module.exports = {
         ripple: {
           '0%': { transform: 'scale(0)', opacity: '1' },
           '100%': { transform: 'scale(4)', opacity: '0' },
+        },
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-2px)' },
+          '20%, 40%, 60%, 80%': { transform: 'translateX(2px)' },
+        },
+        glow: {
+          '0%': { boxShadow: '0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 15px #3b82f6' },
+          '100%': { boxShadow: '0 0 10px #8b5cf6, 0 0 20px #8b5cf6, 0 0 30px #8b5cf6' },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
         },
       },
       backdropBlur: {

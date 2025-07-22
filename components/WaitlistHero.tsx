@@ -1,6 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 const WaitlistHero: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -111,6 +114,22 @@ const WaitlistHero: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Animated CTA Button */}
+        <div className="flex justify-center px-4">
+          <Link href="/join-waitlist" className="group">
+            <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 sm:px-12 rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 animate-shake hover:animate-glow flex items-center gap-3 text-base sm:text-lg lg:text-xl relative overflow-hidden">
+              <span className="animate-bounce">🚀</span>
+              Join the Waitlist Now
+              <FontAwesomeIcon 
+                icon={faArrowRight} 
+                className="text-sm group-hover:transform group-hover:translate-x-1 transition-transform duration-200" 
+              />
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 -top-[1px] -bottom-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </button>
+          </Link>
         </div>
       </div>
     </section>
