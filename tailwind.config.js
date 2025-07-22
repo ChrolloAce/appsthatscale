@@ -76,7 +76,7 @@ module.exports = {
         },
         glow: {
           '0%': { boxShadow: '0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 15px #3b82f6' },
-          '100%': { boxShadow: '0 0 10px #8b5cf6, 0 0 20px #8b5cf6, 0 0 30px #8b5cf6' },
+          '100%': { boxShadow: '0 0 10px #1d4ed8, 0 0 20px #1d4ed8, 0 0 30px #1d4ed8' },
         },
         shimmer: {
           '0%': { transform: 'translateX(-100%)' },

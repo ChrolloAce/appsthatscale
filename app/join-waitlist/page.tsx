@@ -21,7 +21,7 @@ export default function JoinWaitlistPage() {
             className="mx-auto h-12 sm:h-16 w-auto mb-4"
           />
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
-            Join the <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">Waitlist</span>
+            Join the <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Waitlist</span>
           </h1>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             Get 50% off when we launch and be the first to access our proven framework

@@ -49,7 +49,7 @@ const ThankYouHero: React.FC = () => {
         }`}>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
             <span className="block mb-2 sm:mb-3">Thank You!</span>
-            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
               You're In!
             </span>
           </h1>

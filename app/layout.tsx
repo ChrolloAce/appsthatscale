@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   description: 'Master the art of creating profitable B2C applications with our proven framework. Join thousands of successful entrepreneurs who\'ve turned their ideas into revenue-generating machines.',
   keywords: 'B2C app development, mobile app, revenue, entrepreneurship, app monetization, apps that scale',
   authors: [{ name: 'Apps That Scale Team' }],
+  icons: {
+    icon: '/bluelogo.png',
+    shortcut: '/bluelogo.png',
+    apple: '/bluelogo.png',
+  },
 }
 
 export const viewport: Viewport = {

@@ -58,12 +58,12 @@ const WaitlistHero: React.FC = () => {
         </div>
 
         {/* Main Headline - Better mobile sizing */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
-          <span className="block mb-2 sm:mb-3">Build Apps That</span>
-          <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-            Actually Scale
-          </span>
-        </h1>
+                  <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
+            <span className="block mb-2 sm:mb-3">Build Apps That</span>
+            <span className="block bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+              Actually Scale
+            </span>
+          </h1>
 
         {/* Updated Subheadline - Better mobile sizing */}
         <p className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-gray-600 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed font-light px-4">
@@ -119,7 +119,7 @@ const WaitlistHero: React.FC = () => {
         {/* Animated CTA Button */}
         <div className="flex justify-center px-4">
           <Link href="/join-waitlist" className="group">
-            <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 sm:px-12 rounded-2xl shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 animate-shake hover:animate-glow flex items-center gap-3 text-base sm:text-lg lg:text-xl relative overflow-hidden">
+            <button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-8 sm:px-12 rounded-full shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 animate-shake hover:animate-glow flex items-center gap-3 text-base sm:text-lg lg:text-xl relative overflow-hidden">
               <span className="animate-bounce">🚀</span>
               Join the Waitlist Now
               <FontAwesomeIcon 
