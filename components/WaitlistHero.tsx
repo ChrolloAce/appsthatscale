@@ -47,120 +47,58 @@ const WaitlistHero: React.FC = () => {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden web3-hero">
-      {/* Deep Navy to Black Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#020611] via-[#0b1a35] to-[#020611]"></div>
+    <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden dark-tech-hero">
+      {/* Pure Black Background with Subtle Grid */}
+      <div className="absolute inset-0 bg-[#0a0a0a]"></div>
+      <div className="absolute inset-0 tech-grid opacity-20"></div>
 
-      {/* Liquid Glass Pastel Backdrop */}
-      <div className="absolute inset-0 overflow-hidden opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-pink-300 via-blue-200 to-purple-300 blur-[120px] animate-pulse-slow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-gradient-to-br from-blue-200 via-purple-200 to-pink-300 blur-[120px] animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+      {/* Subtle Glow Effects - Very Muted */}
+      <div className="absolute inset-0 overflow-hidden opacity-5">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-blue-500 blur-[150px]"></div>
       </div>
 
-      {/* Hero Container with glassmorphism */}
-      <div className="relative w-full max-w-6xl mx-auto">
-        <div className="hero-card backdrop-blur-xl bg-gradient-to-b from-white/5 to-white/2 rounded-[28px] shadow-2xl border border-white/10 p-8 md:p-16 overflow-hidden">
+      {/* Hero Container - Minimal and Centered */}
+      <div className="relative w-full max-w-3xl mx-auto">
+        <div className="stealth-card backdrop-blur-sm bg-black/40 rounded-2xl shadow-2xl border border-white/5 p-8 md:p-12 overflow-hidden">
           
-          {/* Luminescent Arc at Bottom */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-64 pointer-events-none">
-            {/* Main Arc */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px]">
-              <div className="neon-arc"></div>
-            </div>
-            
-            {/* Particles */}
-            <div className="particles-container">
-              <div className="particle particle-1"></div>
-              <div className="particle particle-2"></div>
-              <div className="particle particle-3"></div>
-              <div className="particle particle-4"></div>
-              <div className="particle particle-5"></div>
-            </div>
-          </div>
+          {/* Subtle Corner Glow */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 blur-[100px] rounded-full"></div>
 
           {/* Content */}
           <div className="relative z-10 text-center">
-            {/* Social Proof - Stacked Avatars */}
-            <div className="flex items-center justify-center mb-6">
-              <div className="flex -space-x-3">
-                {avatars.map((avatar, index) => (
-                  <div 
-                    key={index}
-                    className="w-10 h-10 rounded-full border-2 border-[#0b1a35] overflow-hidden ring-2 ring-cyan-400/20"
-                  >
-                    <img 
-                      src={avatar} 
-                      alt={`User ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                ))}
+            {/* Minimal Badge */}
+            <div className="flex items-center justify-center mb-8">
+              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 border border-white/10">
+                <div className="w-2 h-2 rounded-full bg-blue-400 mr-2 animate-pulse"></div>
+                <span className="text-xs text-gray-400 font-medium uppercase tracking-wider">Launching Soon</span>
               </div>
-              <span className="ml-4 text-sm text-gray-400 font-medium">1420+ monthly users</span>
             </div>
 
-            {/* Main Heading */}
+            {/* Main Heading - Minimal and Bold */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
-              Supercharge Your{' '}
-              <span className="text-gradient bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent glow-text">
-                Web 3 Venture
-              </span>
+              Coming Before 2025
               <br />
-              with the Best On Ramp
+              <span className="text-gray-400 text-3xl md:text-4xl font-normal">Ends</span>
             </h1>
 
-            {/* Subheading */}
-            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-              Onboarding the right way, connecting seamlessly to the blockchain ecosystem with enterprise-grade infrastructure.
+            {/* Subheading - Subtle */}
+            <p className="text-base md:text-lg text-gray-500 mb-12 max-w-md mx-auto font-light">
+              We're putting the finishing touches on something amazing.
             </p>
 
-            {/* Countdown Timer */}
-            <div className="mb-12">
-              <div className="mb-4">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-300 mb-2">Early Bird Offer Ends:</h3>
+            {/* Access Code Section - Minimal */}
+            <div className="mb-8">
+              <p className="text-sm text-gray-500 mb-3">Have an access code?</p>
+              <div className="max-w-md mx-auto">
+                <input
+                  type="text"
+                  placeholder="Enter code"
+                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-600 focus:outline-none focus:border-white/20 transition-colors mb-3"
+                />
+                <button className="w-full px-8 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200">
+                  Unlock Early Access
+                </button>
               </div>
-              <div className="flex justify-center items-center space-x-2 sm:space-x-4 mb-12">
-                <div className="text-center">
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-lg px-3 sm:px-4 py-2 sm:py-3 min-w-[60px] sm:min-w-[80px]">
-                    <div className="text-xl sm:text-3xl font-bold text-cyan-400">{String(timeLeft.days).padStart(2, '0')}</div>
-                    <div className="text-xs sm:text-sm text-gray-400 font-medium">Days</div>
-                  </div>
-                </div>
-                <div className="text-xl sm:text-3xl text-gray-400 font-bold">:</div>
-                <div className="text-center">
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-lg px-3 sm:px-4 py-2 sm:py-3 min-w-[60px] sm:min-w-[80px]">
-                    <div className="text-xl sm:text-3xl font-bold text-cyan-400">{String(timeLeft.hours).padStart(2, '0')}</div>
-                    <div className="text-xs sm:text-sm text-gray-400 font-medium">Hours</div>
-                  </div>
-                </div>
-                <div className="text-xl sm:text-3xl text-gray-400 font-bold">:</div>
-                <div className="text-center">
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-lg px-3 sm:px-4 py-2 sm:py-3 min-w-[60px] sm:min-w-[80px]">
-                    <div className="text-xl sm:text-3xl font-bold text-cyan-400">{String(timeLeft.minutes).padStart(2, '0')}</div>
-                    <div className="text-xs sm:text-sm text-gray-400 font-medium">Mins</div>
-                  </div>
-                </div>
-                <div className="text-xl sm:text-3xl text-gray-400 font-bold">:</div>
-                <div className="text-center">
-                  <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-lg px-3 sm:px-4 py-2 sm:py-3 min-w-[60px] sm:min-w-[80px]">
-                    <div className="text-xl sm:text-3xl font-bold text-cyan-400">{String(timeLeft.seconds).padStart(2, '0')}</div>
-                    <div className="text-xs sm:text-sm text-gray-400 font-medium">Secs</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-24">
-              {/* Our Services Button - Transparent with outline */}
-              <button className="btn-outline px-8 py-3.5 rounded-full border-2 border-white/30 text-white font-semibold hover:bg-white/10 hover:border-white/50 hover:shadow-lg hover:shadow-white/20 transition-all duration-300">
-                Our Services
-              </button>
-
-              {/* Connect Button - Solid white */}
-              <button className="btn-solid px-8 py-3.5 rounded-full bg-white text-black font-semibold hover:shadow-xl hover:shadow-cyan-400/40 hover:scale-105 transition-all duration-300">
-                Connect
-              </button>
             </div>
           </div>
         </div>

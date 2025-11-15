@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#020611] to-[#0b1a35]">
+    <main className="min-h-screen bg-[#0a0a0a]">
       <Navbar />
       <div className="relative">
         {/* Hero Section */}

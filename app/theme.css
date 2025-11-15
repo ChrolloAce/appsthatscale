@@ -433,7 +433,45 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
 .text-muted { color: var(--text-muted); }
 .text-white { color: var(--text-white); }
 
-/* ===== WEB3 THEME STYLES ===== */
+/* ===== DARK TECH MINIMAL THEME ===== */
+
+/* Tech Grid Pattern */
+.tech-grid {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center center;
+}
+
+/* Stealth Card */
+.stealth-card {
+  position: relative;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.stealth-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  pointer-events: none;
+}
+
+/* Dark Tech Hero */
+.dark-tech-hero {
+  background: #0a0a0a;
+}
+
+/* ===== WEB3 THEME STYLES (Legacy) ===== */
 
 /* Neon Arc Effect */
 .neon-arc {
