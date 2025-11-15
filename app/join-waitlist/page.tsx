@@ -11,32 +11,40 @@ export const metadata: Metadata = {
 
 export default function JoinWaitlistPage() {
   return (
-    <main className="min-h-screen bg-white">
-      {/* Header with Logo */}
-      <header className="pt-8 pb-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <img 
-            src="/toplogo.png" 
-            alt="Apps That Scale" 
-            className="mx-auto h-12 sm:h-16 w-auto mb-4"
-          />
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
-            Join the <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Waitlist</span>
-          </h1>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            Get 50% off when we launch and be the first to access our proven framework
-          </p>
-        </div>
-      </header>
+    <main className="min-h-screen relative bg-[#0a0a0a]">
+      {/* Subtle gradient shading overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-black to-zinc-950 opacity-60"></div>
+      
+      {/* Soft grid pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] bg-[position:-1px_-1px]"></div>
+      
+      <div className="relative">
+        {/* Header with Logo */}
+        <header className="pt-12 pb-8 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center">
+            <img 
+              src="/logo.png" 
+              alt="Apps That Scale" 
+              className="mx-auto h-10 sm:h-12 w-auto mb-6 opacity-90"
+            />
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
+              Join the Waitlist
+            </h1>
+            <p className="text-sm sm:text-base text-gray-400 max-w-2xl mx-auto">
+              Get 50% off when we launch and be the first to access our proven framework
+            </p>
+          </div>
+        </header>
 
-      {/* Quiz Section */}
-      <section className="pb-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <WaitlistQuiz />
-        </div>
-      </section>
+        {/* Quiz Section */}
+        <section className="pb-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <WaitlistQuiz />
+          </div>
+        </section>
 
-      <Footer />
+        <Footer />
+      </div>
     </main>
   )
 } 

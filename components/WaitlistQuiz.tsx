@@ -226,19 +226,19 @@ const WaitlistQuiz: React.FC<WaitlistQuizProps> = ({ className = '' }) => {
   if (isCompleted) {
     return (
       <div className={`max-w-2xl mx-auto ${className}`}>
-        <div className="card card-spacious text-center bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-8 text-center">
+          <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Welcome to the exclusive waitlist! 🎉</h3>
-          <p className="text-lg text-gray-600 mb-6">
+          <h3 className="text-2xl font-semibold text-white mb-4">Welcome to the exclusive waitlist</h3>
+          <p className="text-base text-gray-400 mb-6">
             Thanks {formData.name}! Based on your answers, we'll craft the perfect learning experience to help you reach your {answers.mrr_goals?.[0]} MRR goal.
           </p>
-          <div className="bg-white rounded-xl p-4 border border-green-200">
-            <p className="text-sm text-gray-500 mb-2">🎯 Your personalized path is ready!</p>
-            <p className="font-semibold text-gray-800">Check your email for exclusive early access</p>
+          <div className="bg-white/5 rounded-md p-4 border border-white/10">
+            <p className="text-xs text-gray-500 mb-2 uppercase tracking-wider">Your personalized path is ready</p>
+            <p className="font-medium text-white">Check your email for exclusive early access</p>
           </div>
         </div>
       </div>
@@ -247,16 +247,16 @@ const WaitlistQuiz: React.FC<WaitlistQuizProps> = ({ className = '' }) => {
 
   return (
     <div className={`max-w-2xl mx-auto ${className}`}>
-      <div className="card card-spacious">
+      <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 sm:p-8">
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-gray-500">Step {currentStep + 1} of {steps.length}</span>
-            <span className="text-sm text-gray-500">{Math.round(progress)}% complete</span>
+          <div className="flex justify-between items-center mb-3">
+            <span className="text-xs text-gray-500 uppercase tracking-wider">Step {currentStep + 1} of {steps.length}</span>
+            <span className="text-xs text-gray-500">{Math.round(progress)}% complete</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-white/5 rounded-full h-1">
             <div 
-              className="bg-blue-600 h-2 rounded-full transition-all duration-500"
+              className="bg-white/30 h-1 rounded-full transition-all duration-500"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -264,28 +264,28 @@ const WaitlistQuiz: React.FC<WaitlistQuizProps> = ({ className = '' }) => {
 
         {/* Question */}
         <div className="text-center mb-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+          <h2 className="text-xl sm:text-2xl font-semibold text-white mb-3">
             {currentStepData.question}
           </h2>
-          <p className="text-lg text-gray-600">{currentStepData.subtitle}</p>
+          <p className="text-sm text-gray-400">{currentStepData.subtitle}</p>
         </div>
 
         {/* Answer Options or Input */}
         {currentStepData.type === 'single' && currentStepData.answers ? (
-          <div className="space-y-4">
+          <div className="space-y-3">
             {currentStepData.answers.map((answer) => (
               <button
                 key={answer.id}
                 onClick={() => handleAnswer(currentStepData.id, answer.id)}
                 className={`
-                  w-full p-4 text-left border-2 rounded-xl transition-all duration-200 hover:border-blue-300 hover:bg-blue-50 
+                  w-full p-4 text-left border rounded-md transition-all duration-200 hover:bg-white/10 hover:border-white/20
                   ${answers[currentStepData.id]?.includes(answer.id) 
-                    ? 'border-blue-500 bg-blue-50 text-blue-900' 
-                    : 'border-gray-200 bg-white text-gray-700'
+                    ? 'border-white/30 bg-white/10 text-white' 
+                    : 'border-white/10 bg-white/5 text-gray-300'
                   }
                 `}
               >
-                <span className="text-lg font-medium">{answer.text}</span>
+                <span className="text-sm sm:text-base font-normal">{answer.text}</span>
               </button>
             ))}
           </div>
@@ -298,26 +298,26 @@ const WaitlistQuiz: React.FC<WaitlistQuizProps> = ({ className = '' }) => {
                      currentStepData.id === 'email' ? formData.email : formData.phone}
               onChange={(e) => handleInputChange(currentStepData.id as keyof typeof formData, e.target.value)}
               placeholder={currentStepData.placeholder}
-              className={`input w-full text-center text-lg py-4 ${errors[currentStepData.id] ? 'border-red-300 focus:border-red-500' : ''}`}
+              className={`w-full text-center text-base py-4 px-4 bg-white/5 border rounded-md text-white placeholder-gray-500 focus:outline-none focus:bg-white/10 transition-all ${errors[currentStepData.id] ? 'border-red-500/50 focus:border-red-500' : 'border-white/10 focus:border-white/20'}`}
               onKeyPress={handleKeyPress}
               autoFocus
             />
             {errors[currentStepData.id] && (
-              <p className="text-red-600 text-center text-sm">{errors[currentStepData.id]}</p>
+              <p className="text-red-400 text-center text-sm">{errors[currentStepData.id]}</p>
             )}
             
             <button
               onClick={handleNext}
               disabled={isSubmitting}
-              className="btn btn-primary btn-lg w-full"
+              className="w-full bg-white text-black font-medium py-3 px-8 rounded-md hover:bg-gray-100 transition-all duration-200 flex items-center justify-center gap-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>
-                  <div className="spinner mr-2"></div>
+                  <div className="w-4 h-4 border-2 border-black/20 border-t-black rounded-full animate-spin"></div>
                   Joining Waitlist...
                 </>
               ) : currentStep === steps.length - 1 ? (
-                'Join the Waitlist 🚀'
+                'Join the Waitlist'
               ) : (
                 'Continue →'
               )}
