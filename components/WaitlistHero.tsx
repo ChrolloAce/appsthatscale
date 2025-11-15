@@ -114,7 +114,7 @@ const WaitlistHero: React.FC = () => {
         {/* Animated CTA Button */}
         <div className="flex justify-center px-4">
           <Link href="/join-waitlist" className="group">
-            <button className="bg-white text-black font-medium py-3 px-8 sm:px-10 rounded-md hover:bg-gray-100 transition-all duration-200 flex items-center gap-2 text-sm sm:text-base">
+            <button className="bg-white/5 border border-white/10 text-white font-normal py-3 px-8 sm:px-10 rounded-md hover:bg-white/10 hover:border-white/20 transition-all duration-200 flex items-center gap-2 text-sm sm:text-base">
               Join the Waitlist
               <FontAwesomeIcon 
                 icon={faArrowRight} 
