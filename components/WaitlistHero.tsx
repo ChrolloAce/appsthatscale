@@ -78,7 +78,7 @@ const WaitlistHero: React.FC = () => {
         {/* Countdown Timer - Mobile optimized */}
         <div className="mb-12 sm:mb-16 px-4">
           <div className="mb-3 sm:mb-4">
-            <h3 className="text-xs sm:text-sm font-normal text-gray-500 mb-2 uppercase tracking-wider">Offer Ends In</h3>
+            <h3 className="text-xs sm:text-sm font-normal text-gray-500 mb-2 uppercase tracking-wider">Launching November 30</h3>
           </div>
           <div className="flex justify-center items-center space-x-2 sm:space-x-3">
             <div className="text-center">
