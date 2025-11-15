@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   keywords: 'B2C app development, mobile app, revenue, entrepreneurship, app monetization, apps that scale',
   authors: [{ name: 'Apps That Scale Team' }],
   icons: {
-    icon: '/bluelogo.png',
-    shortcut: '/bluelogo.png',
-    apple: '/bluelogo.png',
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
 }
 

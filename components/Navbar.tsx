@@ -10,9 +10,9 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <img 
-              src="/toplogo.png" 
+              src="/logo.png" 
               alt="Apps That Scale" 
-              className="h-8 w-auto opacity-90"
+              className="h-7 w-auto opacity-90"
             />
           </div>
         </div>

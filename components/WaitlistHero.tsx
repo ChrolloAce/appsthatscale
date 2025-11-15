@@ -45,9 +45,9 @@ const WaitlistHero: React.FC = () => {
         {/* Logo/Brand */}
         <div className="mb-8 sm:mb-12">
           <img 
-            src="/toplogo.png" 
+            src="/logo.png" 
             alt="Apps That Scale" 
-            className="mx-auto h-16 sm:h-20 lg:h-24 w-auto mb-6 sm:mb-8"
+            className="mx-auto h-12 sm:h-16 lg:h-20 w-auto mb-6 sm:mb-8"
           />
         </div>
 
