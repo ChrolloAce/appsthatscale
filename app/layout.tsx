@@ -34,14 +34,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <script
-          defer
-          data-website-id="dfid_k4IKMzmqEAL5mh2E5xVhv"
-          data-domain="appsthatscale.com"
-          src="https://datafa.st/js/script.js"
-        />
-      </head>
       <body className={`${inter.className} overflow-x-hidden`}>
         {children}
       </body>
