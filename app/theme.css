@@ -29,54 +29,61 @@
   --font-bold: 700;
   --font-extrabold: 800;
   
-  /* === COLORS === */
-  /* Primary Palette */
-  --primary-50: #f8fafc;
-  --primary-100: #f1f5f9;
-  --primary-200: #e2e8f0;
-  --primary-300: #cbd5e1;
-  --primary-400: #94a3b8;
-  --primary-500: #64748b;
-  --primary-600: #475569;
-  --primary-700: #334155;
-  --primary-800: #1e293b;
-  --primary-900: #0f172a;
+  /* === DARK MODE COLORS === */
+  /* Dark Background Palette */
+  --dark-bg-primary: #0a0a0a;
+  --dark-bg-secondary: #111111;
+  --dark-bg-tertiary: #1a1a1a;
+  --dark-bg-elevated: #1f1f1f;
   
-  /* Accent Colors */
-  --accent-blue: #3b82f6;
-  --accent-blue-light: #60a5fa;
-  --accent-blue-dark: #2563eb;
+  /* Dark Text Colors */
+  --dark-text-primary: #ffffff;
+  --dark-text-secondary: #a0a0a0;
+  --dark-text-tertiary: #6b6b6b;
+  --dark-text-muted: #4a4a4a;
   
-  --accent-green: #10b981;
-  --accent-green-light: #34d399;
-  --accent-green-dark: #059669;
+  /* Accent Colors - Brighter for dark mode */
+  --accent-blue: #60a5fa;
+  --accent-blue-light: #93c5fd;
+  --accent-blue-dark: #3b82f6;
+  --accent-blue-glow: rgba(96, 165, 250, 0.5);
   
-  --accent-purple: #8b5cf6;
-  --accent-purple-light: #a78bfa;
-  --accent-purple-dark: #7c3aed;
+  --accent-purple: #a78bfa;
+  --accent-purple-light: #c4b5fd;
+  --accent-purple-dark: #8b5cf6;
+  --accent-purple-glow: rgba(167, 139, 250, 0.5);
   
-  --accent-orange: #f59e0b;
-  --accent-orange-light: #fbbf24;
-  --accent-orange-dark: #d97706;
+  --accent-cyan: #22d3ee;
+  --accent-cyan-light: #67e8f9;
+  --accent-cyan-dark: #06b6d4;
+  --accent-cyan-glow: rgba(34, 211, 238, 0.5);
+  
+  --accent-green: #34d399;
+  --accent-green-light: #6ee7b7;
+  --accent-green-dark: #10b981;
+  
+  --accent-orange: #fb923c;
+  --accent-orange-light: #fdba74;
+  --accent-orange-dark: #f97316;
   
   /* Semantic Colors */
   --success: var(--accent-green);
   --warning: var(--accent-orange);
-  --error: #ef4444;
+  --error: #f87171;
   --info: var(--accent-blue);
   
   /* Text Colors */
-  --text-primary: var(--primary-800);
-  --text-secondary: var(--primary-600);
-  --text-tertiary: var(--primary-500);
-  --text-muted: var(--primary-400);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --text-tertiary: var(--dark-text-tertiary);
+  --text-muted: var(--dark-text-muted);
   --text-white: #ffffff;
   
   /* Background Colors */
-  --bg-primary: #ffffff;
-  --bg-secondary: var(--primary-50);
-  --bg-tertiary: var(--primary-100);
-  --bg-muted: var(--primary-200);
+  --bg-primary: var(--dark-bg-primary);
+  --bg-secondary: var(--dark-bg-secondary);
+  --bg-tertiary: var(--dark-bg-tertiary);
+  --bg-elevated: var(--dark-bg-elevated);
   
   /* === SPACING === */
   --space-1: 0.25rem;   /* 4px */
@@ -116,9 +123,16 @@
   --transition-slow: 350ms ease-in-out;
   
   /* === GLASS EFFECTS === */
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-bg: rgba(26, 26, 26, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
   --glass-blur: blur(20px);
+  
+  /* === GLOW EFFECTS === */
+  --glow-sm: 0 0 10px var(--accent-blue-glow);
+  --glow-md: 0 0 20px var(--accent-blue-glow);
+  --glow-lg: 0 0 40px var(--accent-blue-glow);
+  --glow-purple: 0 0 30px var(--accent-purple-glow);
+  --glow-cyan: 0 0 30px var(--accent-cyan-glow);
 }
 
 /* ===== GLOBAL TYPOGRAPHY ===== */
@@ -132,7 +146,12 @@ body {
   font-weight: var(--font-normal);
   line-height: 1.6;
   color: var(--text-primary);
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0, 0 0;
 }
 
 /* Headings */
@@ -165,9 +184,9 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), var(--glow-sm);
   transform: translateY(-2px);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .card-compact {
@@ -208,27 +227,28 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
 .btn-primary {
   background: linear-gradient(135deg, var(--accent-blue), var(--accent-blue-dark));
   color: var(--text-white);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), var(--glow-sm);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), var(--glow-md);
   background: linear-gradient(135deg, var(--accent-blue-light), var(--accent-blue));
 }
 
 .btn-secondary {
   background: var(--glass-bg);
   color: var(--text-primary);
-  border: 1px solid var(--primary-200);
+  border: 1px solid var(--glass-border);
   box-shadow: var(--shadow-sm);
+  backdrop-filter: var(--glass-blur);
 }
 
 .btn-secondary:hover {
-  background: var(--bg-primary);
-  border-color: var(--primary-300);
+  background: var(--bg-tertiary);
+  border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), var(--glow-sm);
 }
 
 .btn-ghost {
@@ -240,7 +260,7 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
 .btn-ghost:hover {
   background: var(--bg-tertiary);
   color: var(--text-primary);
-  border-color: var(--primary-200);
+  border-color: var(--glass-border);
 }
 
 .btn-sm {
@@ -264,9 +284,9 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--primary-200);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  background: var(--bg-primary);
+  background: var(--bg-tertiary);
   color: var(--text-primary);
   transition: all var(--transition-base);
   outline: none;
@@ -274,7 +294,8 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
 
 .input:focus {
   border-color: var(--accent-blue);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15), var(--glow-sm);
+  background: var(--bg-elevated);
 }
 
 .input::placeholder {
@@ -286,9 +307,9 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
   font-family: var(--font-primary);
   font-size: var(--text-sm);
   padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--primary-200);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  background: var(--bg-primary);
+  background: var(--bg-tertiary);
   color: var(--text-primary);
   cursor: pointer;
   transition: all var(--transition-base);
@@ -297,7 +318,8 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
 
 .select:focus {
   border-color: var(--accent-blue);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15), var(--glow-sm);
+  background: var(--bg-elevated);
 }
 
 /* Badges */
@@ -331,9 +353,9 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
 }
 
 .badge-secondary {
-  background: var(--primary-100);
+  background: var(--bg-tertiary);
   color: var(--text-secondary);
-  border: 1px solid var(--primary-200);
+  border: 1px solid var(--glass-border);
 }
 
 /* Icons */
@@ -364,13 +386,13 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
 .divider {
   border: none;
   height: 1px;
-  background: var(--primary-200);
+  background: var(--glass-border);
   margin: var(--space-4) 0;
 }
 
 .divider-thick {
   height: 2px;
-  background: var(--primary-300);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 /* Loading States */
@@ -382,7 +404,7 @@ h6 { font-size: var(--text-base); font-weight: var(--font-medium); }
 .spinner {
   width: 1.5rem;
   height: 1.5rem;
-  border: 2px solid var(--primary-200);
+  border: 2px solid var(--glass-border);
   border-top: 2px solid var(--accent-blue);
   border-radius: var(--radius-full);
   animation: spin 1s linear infinite;
