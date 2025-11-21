@@ -65,6 +65,20 @@ const ThankYouHero: React.FC = () => {
             </p>
           </div>
         </div>
+
+        {/* Telegram Button */}
+        <div className={`mt-10 sm:mt-14 px-4 transform transition-all duration-1000 delay-700 ${
+          isAnimated ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+        }`}>
+          <a 
+            href="https://t.me/appsthatscale"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold text-base sm:text-lg lg:text-xl px-10 sm:px-14 lg:px-16 py-4 sm:py-5 lg:py-6 rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-blue-600/50 active:scale-95"
+          >
+            Join Free Telegram for Exclusive Content and Updates
+          </a>
+        </div>
       </div>
     </section>
   )
